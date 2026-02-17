@@ -127,7 +127,7 @@ The server will be available at `http://YOUR_IP:8000` or at `http://127.0.0.1:80
 
 ### Part 2: Android App Setup
 Download and install apk manually:
-- [Download](google.com)
+- [Download apk](https://github.com/Ninikitos/Attention-Switching-research-application/tree/main/debug_apk)
 - Plugin your phone and make sure adb sees it: 
   - ```adb devices```
 - Run this command in a folder where you downloaded apk: 
