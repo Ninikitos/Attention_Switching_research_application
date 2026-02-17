@@ -4,6 +4,8 @@ A research application for studying attention switching between devices (compute
 
 ## 🎯 Project Overview
 
+![Starting screen of a letter matrix web app](screenshots/index.png)
+
 This application consists of two parts:
 1. **Django Web Application** - Runs on a computer, displays letter matrices, and manages research sessions;
 2. **Android Mobile App** - Displays different letter matrices on the phone and synchronizes with the computer.
@@ -11,13 +13,21 @@ This application consists of two parts:
 ### How It Works
 
 1. Researcher starts a session on the computer;
-2. Participant scans a QR code with their phone to join the session;
+    - <img src="screenshots/index.png" alt="Study starting screen" width="200">
+2. Launch mobile app and set IP address of your computer:
+    - <img src="screenshots/mobile_start_screen.png" alt="First screen of a mobile app" width="100">
+    - <img src="screenshots/mobile_ip_setup.png" alt="Setup ip address" width="100">
+3. Participant scans a QR code via [mobile app](https://github.com/Ninikitos/Attention-Switching-research-application/tree/main/debug_apk) with their phone to join the session; 
+    - <img src="screenshots/mobile_camera_qr_scan.png" alt="Mobile QR code scanning" width="100">
 3. Both devices show different 6-letter matrices (3×2 grid);
+    - <img src="screenshots/letter_matrix.png" alt="Web Matrix" width="200">
+    - <img src="screenshots/mobile_letter_matrix.png" alt="Mobile letter matrix" width="100">
 4. Two letters are common between both matrices (target letters);
 5. Participant selects 2 matching letters on the computer;
 6. When correct letters are selected, both devices automatically show new matrices;
 7. Process repeats for 10 rounds;
 8. Results are saved and can be downloaded.
+    - <img src="screenshots/data_result.png" alt="Research data" width="200">
 
 ## Use cases
 ### 1. 🧠 Does Multitasking Actually Slow You Down?

@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container d-flex justify-content-center mt-5">
-        <div class="card shadow col-6">
+        <div class="card shadow col-8">
             <div class="card-body p-4">
                 <h1 class="mb-4">Study finished.</h1>
                 <div class="row mb-4">
@@ -27,14 +27,22 @@
                         <thead>
                         <tr>
                             <th>Round</th>
-                            <th class="text-end">Time (sec)</th>
+                            <th>Time (sec)</th>
+                            <th>Target letters</th>
+                            <th>Selection</th>
+                            <th>Web matrix</th>
+                            <th>Mobile matrix</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for round in rounds %}
                             <tr>
                                 <td>{{ round.round_number }}</td>
-                                <td class="text-end">{{ round.response_time|floatformat:2 }}</td>
+                                <td>{{ round.response_time|floatformat:2 }}</td>
+                                <td>{{ round.target_letters|join:', ' }}</td>
+                                <td>{{ round.web_selection.letters|join:', ' }}</td>
+                                <td>{{ round.web_matrix }}</td>
+                                <td>{{ round.mobile_matrix }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -53,4 +61,16 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/session/{{ session.session_id }}/');
+        socket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            if (data.type === 'session_stop') {
+                window.location.href = "{% url 'main:index' %}";
+            }
+        };
+    </script>
 {% endblock %}

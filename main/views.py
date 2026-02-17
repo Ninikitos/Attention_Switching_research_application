@@ -237,7 +237,6 @@ def api_stop_session(request, session_id):
     )
     return HttpResponse(status=204)
 
-
 def download_csv(request, session_id):
     session = get_object_or_404(Session, session_id=session_id)
     rounds = session.rounds.all().order_by('round_number')
