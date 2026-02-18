@@ -36,3 +36,15 @@
         </div>
     </div>
 {% endblock %}
+
+{% block js %}
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/session/{{ session.session_id }}/');
+        socket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            if (data.type === 'session_stop') {
+                window.location.href = "{% url 'main:index' %}";
+            }
+        };
+    </script>
+{% endblock %}
